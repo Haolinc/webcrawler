@@ -47,6 +47,13 @@ public final class WebCrawlerMain {
     }
 
     // TODO: Write the profile data to a text file (or System.out if the file name is empty)
+    String profileOutputPath = config.getProfileOutputPath();
+    if (!profileOutputPath.isEmpty()){
+      Path path = Path.of(profileOutputPath);
+      profiler.writeData(path);
+    }else {
+      profiler.writeData(new OutputStreamWriter(System.out));
+    }
 
   }
 
